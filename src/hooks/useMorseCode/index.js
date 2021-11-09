@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import { useEffect, useRef, useContext } from 'react';
 
-import { TIMING } from '@consts/morseCode';
-import { MorseCodeContext } from '@contextProviders/MorseCodeProvider';
+import { TIMING } from '../../consts/morseCode';
+import { MorseCodeContext } from '../../contextProviders/MorseCodeProvider';
 import convertKeyPressedToSignal from './convertKeyPressToSignal';
 
 const useSpaceButton = () => {
