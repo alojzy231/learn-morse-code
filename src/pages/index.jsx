@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MorseCodeProvider from 'contextProviders/MorseCodeProvider';
+import MorseCodeProvider from '../contextProviders/MorseCodeProvider';
 import TelegraphSounderButton from '../components/generic/TelegraphSounderButton';
 
 export default function Home() {
