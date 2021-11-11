@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 export const MorseCodeContext = React.createContext();
 
 export default function MorseCodeProvider({ children }) {
-  const [currentMorseCode, setCurrentMorseCode] = useState('');
+  const [typedMorseCode, setTypedMorseCode] = useState([]);
 
   return (
-    <MorseCodeContext.Provider value={{ currentMorseCode, setCurrentMorseCode }}>
+    <MorseCodeContext.Provider value={{ typedMorseCode, setTypedMorseCode }}>
       {children}
     </MorseCodeContext.Provider>
   );

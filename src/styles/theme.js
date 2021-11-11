@@ -3,7 +3,7 @@ const colors = {
   secondary: '#B2886B',
   background: '#FFF6EC',
   disabled: '#DFE0DF',
-  active: '#402E32',
+  black: '#000000',
   action: '#4FBECD',
   tints: {
     primaryTint_10: '#ff911a',

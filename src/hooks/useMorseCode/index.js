@@ -6,7 +6,7 @@ import { MorseCodeContext } from '../../contextProviders/MorseCodeProvider';
 import convertKeyPressedToSignal from './convertKeyPressToSignal';
 
 const useSpaceButton = () => {
-  const { setCurrentMorseCode } = useContext(MorseCodeContext);
+  const { setTypedMorseCode } = useContext(MorseCodeContext);
   const buttonRef = useRef(null);
   let isSpacePressed = false;
   let resetTimeout = null;
@@ -25,8 +25,8 @@ const useSpaceButton = () => {
   const handleSpaceUp = ({ code, timeStamp }) => {
     if (checkIfSpace(code)) {
       isSpacePressed = false;
-      setCurrentMorseCode((prevState) => prevState + convertKeyPressedToSignal(timeStamp, false));
-      resetTimeout = setTimeout(() => setCurrentMorseCode(''), TIMING.space);
+      setTypedMorseCode((prevState) => [...prevState, convertKeyPressedToSignal(timeStamp, false)]);
+      resetTimeout = setTimeout(() => setTypedMorseCode(''), TIMING.space);
     }
   };
 
