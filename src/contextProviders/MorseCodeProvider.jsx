@@ -6,8 +6,12 @@ export const MorseCodeContext = React.createContext();
 export default function MorseCodeProvider({ children }) {
   const [typedMorseCode, setTypedMorseCode] = useState([]);
 
+  const resetTypedMorseCode = () => {
+    setTypedMorseCode([]);
+  };
+
   return (
-    <MorseCodeContext.Provider value={{ typedMorseCode, setTypedMorseCode }}>
+    <MorseCodeContext.Provider value={{ typedMorseCode, setTypedMorseCode, resetTypedMorseCode }}>
       {children}
     </MorseCodeContext.Provider>
   );

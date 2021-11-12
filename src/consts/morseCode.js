@@ -1,7 +1,7 @@
 export const MORSE_CODE = {
   empty: '',
-  dot: 'dot',
-  dash: 'dash',
+  dot: '.',
+  dash: '-',
 };
 
 // timing in ms

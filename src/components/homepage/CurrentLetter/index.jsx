@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 
 import { MORSE_CODE_ALPHABET } from '../../../consts/morseCode';
 import { MorseCodeContext } from '../../../contextProviders/MorseCodeProvider';
+import isEqualTo from './compareArrays';
 import {
   CurrentLetterContainer,
   CurrentAlphabetLetter,
@@ -13,7 +14,7 @@ import Dot from './symbols/Dot';
 export default function CurrentLetter() {
   const [currentLetter, setCurrentLetter] = useState('');
   const [currentMorseCode, setCurrentMorseCode] = useState([]);
-  const { typedMorseCode } = useContext(MorseCodeContext);
+  const { typedMorseCode, resetTypedMorseCode } = useContext(MorseCodeContext);
   console.log(typedMorseCode);
   const changeCurrentLetter = (letter) => {
     setCurrentLetter(letter.toUpperCase());
@@ -24,11 +25,28 @@ export default function CurrentLetter() {
     changeCurrentLetter('a');
   }, []);
 
+  useEffect(() => {
+    if (
+      typedMorseCode.length > 0 &&
+      currentMorseCode.at(typedMorseCode.length - 1) !== typedMorseCode.at(-1)
+    ) {
+      resetTypedMorseCode();
+    } else if (isEqualTo(typedMorseCode, currentMorseCode)) {
+      changeCurrentLetter('b');
+    }
+  }, [typedMorseCode]);
+
   return (
     <CurrentLetterContainer>
       <CurrentAlphabetLetter>{currentLetter}</CurrentAlphabetLetter>
       <CurrentMorseCode>
-        {currentMorseCode.map((symbol) => (symbol === '.' ? <Dot /> : <Dash />))}
+        {currentMorseCode.map((symbol, index) =>
+          symbol === '.' ? (
+            <Dot isWritten={typedMorseCode[index] === symbol} />
+          ) : (
+            <Dash isWritten={typedMorseCode[index] === symbol} />
+          ),
+        )}
       </CurrentMorseCode>
     </CurrentLetterContainer>
   );
