@@ -15,15 +15,15 @@ export default function CurrentLetter() {
   const [currentLetter, setCurrentLetter] = useState('');
   const [currentMorseCode, setCurrentMorseCode] = useState([]);
   const { typedMorseCode, resetTypedMorseCode } = useContext(MorseCodeContext);
-  console.log(typedMorseCode);
-  const changeCurrentLetter = (letter) => {
-    setCurrentLetter(letter.toUpperCase());
-    setCurrentMorseCode(MORSE_CODE_ALPHABET[letter].split(''));
-  };
 
-  useEffect(() => {
-    changeCurrentLetter('a');
-  }, []);
+  const changeCurrentLetter = () => {
+    const newLetter =
+      Object.keys(MORSE_CODE_ALPHABET)[
+        Math.floor(Math.random() * Object.keys(MORSE_CODE_ALPHABET).length)
+      ];
+    setCurrentLetter(newLetter.toUpperCase());
+    setCurrentMorseCode(MORSE_CODE_ALPHABET[newLetter].split(''));
+  };
 
   useEffect(() => {
     if (
@@ -32,7 +32,8 @@ export default function CurrentLetter() {
     ) {
       resetTypedMorseCode();
     } else if (isEqualTo(typedMorseCode, currentMorseCode)) {
-      changeCurrentLetter('b');
+      resetTypedMorseCode();
+      changeCurrentLetter();
     }
   }, [typedMorseCode]);
 
