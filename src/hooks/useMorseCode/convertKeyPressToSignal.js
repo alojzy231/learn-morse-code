@@ -13,7 +13,6 @@ const convertKeyPressedToSignal = (timeStamp, isStart = true) => {
   }
 
   timeDifference = timeStamp - startTime;
-
   return calculateSignalName(timeDifference);
 };
 

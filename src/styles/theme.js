@@ -6,8 +6,8 @@ const colors = {
   black: '#000000',
   action: '#4FBECD',
   tints: {
-    primaryTint_10: '#ff911a',
-    primaryTint_20: '#FF9D33',
+    primaryTint_20: '#ff911a',
+    primaryTint_10: '#FF9D33',
   },
 };
 
