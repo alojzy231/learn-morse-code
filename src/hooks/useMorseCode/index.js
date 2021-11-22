@@ -56,8 +56,8 @@ const useMorseCode = () => {
       window.addEventListener('keydown', handleSpaceDown);
       window.addEventListener('keyup', handleSpaceUp);
 
-      currentButtonRef.addEventListener('mousedown', handleTouchStart);
-      currentButtonRef.addEventListener('mouseup', handleTouchStart);
+      currentButtonRef.addEventListener('mousedown', handleButtonDown);
+      currentButtonRef.addEventListener('mouseup', handleButtonUp);
 
       currentButtonRef.addEventListener('touchstart', handleTouchStart);
       currentButtonRef.addEventListener('touchend', handleTouchEnd);
@@ -66,7 +66,7 @@ const useMorseCode = () => {
         window.removeEventListener('keydown', handleSpaceDown);
         window.removeEventListener('keyup', handleSpaceUp);
 
-        currentButtonRef.removeEventListener('mousedown', handleTouchEnd);
+        currentButtonRef.removeEventListener('mousedown', handleButtonDown);
         currentButtonRef.removeEventListener('mouseup', handleButtonUp);
 
         currentButtonRef.removeEventListener('touchstart', handleTouchStart);
