@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 import { MORSE_CODE_ALPHABET } from '../../../consts/morseCode';
+import { SelectedLettersContext } from '../../../contextProviders/SelectedLettersProvided';
 import { MorseCodeContext } from '../../../contextProviders/MorseCodeProvider';
 import isEqualTo from './compareArrays';
 import {
@@ -15,14 +16,14 @@ export default function CurrentLetter() {
   const [currentLetter, setCurrentLetter] = useState('');
   const [currentMorseCode, setCurrentMorseCode] = useState([]);
   const { typedMorseCode, resetTypedMorseCode } = useContext(MorseCodeContext);
+  const { selectedLetters } = useContext(SelectedLettersContext);
 
   const changeCurrentLetter = () => {
-    const newLetter =
-      Object.keys(MORSE_CODE_ALPHABET)[
-        Math.floor(Math.random() * Object.keys(MORSE_CODE_ALPHABET).length)
-      ];
-    setCurrentLetter(newLetter.toUpperCase());
-    setCurrentMorseCode(MORSE_CODE_ALPHABET[newLetter].split(''));
+    if (selectedLetters.length > 0) {
+      const newLetter = selectedLetters[Math.floor(Math.random() * selectedLetters.length)];
+      setCurrentLetter(newLetter.toUpperCase());
+      setCurrentMorseCode(MORSE_CODE_ALPHABET[newLetter].split(''));
+    }
   };
 
   useEffect(() => {
@@ -35,20 +36,32 @@ export default function CurrentLetter() {
       resetTypedMorseCode();
       changeCurrentLetter();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typedMorseCode]);
+
+  useEffect(() => {
+    if (!selectedLetters.includes(currentLetter)) {
+      changeCurrentLetter();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLetters]);
 
   return (
     <CurrentLetterContainer>
-      <CurrentAlphabetLetter>{currentLetter}</CurrentAlphabetLetter>
-      <CurrentMorseCode>
-        {currentMorseCode.map((symbol, index) =>
-          symbol === '.' ? (
-            <Dot isWritten={typedMorseCode[index] === symbol} />
-          ) : (
-            <Dash isWritten={typedMorseCode[index] === symbol} />
-          ),
-        )}
-      </CurrentMorseCode>
+      {selectedLetters.length > 0 && (
+        <>
+          <CurrentAlphabetLetter>{currentLetter}</CurrentAlphabetLetter>
+          <CurrentMorseCode>
+            {currentMorseCode.map((symbol, index) =>
+              symbol === '.' ? (
+                <Dot isWritten={typedMorseCode[index] === symbol} />
+              ) : (
+                <Dash isWritten={typedMorseCode[index] === symbol} />
+              ),
+            )}
+          </CurrentMorseCode>
+        </>
+      )}
     </CurrentLetterContainer>
   );
 }

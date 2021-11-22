@@ -40,7 +40,6 @@ const useMorseCode = () => {
 
   const handleTouchStart = (event) => {
     event.preventDefault();
-    console.log(event);
     handleButtonDown(event);
   };
 
@@ -75,6 +74,7 @@ const useMorseCode = () => {
     }
 
     return null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return buttonRef;
