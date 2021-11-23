@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Header3 } from '../../../../styles/Typography.styles';
 
 export const LetterContainer = styled.button`
   margin: 0 0.8rem;
@@ -13,4 +14,8 @@ export const LetterContainer = styled.button`
 `;
 export const LetterText = styled.h2`
   color: ${({ selected, theme: { colors } }) => (selected ? colors.black : colors.disabled)};
+
+  @media ${({ theme: { medias } }) => medias.mobile} {
+    ${Header3};
+  }
 `;

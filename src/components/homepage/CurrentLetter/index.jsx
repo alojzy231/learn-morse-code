@@ -22,9 +22,9 @@ export default function CurrentLetter() {
     if (selectedLetters.length > 0) {
       let newLetter = selectedLetters[Math.floor(Math.random() * selectedLetters.length)];
 
-      while (newLetter.toUpperCase() === currentLetter)
+      while (selectedLetters.length !== 1 && newLetter.toUpperCase() === currentLetter) {
         newLetter = selectedLetters[Math.floor(Math.random() * selectedLetters.length)];
-
+      }
       setCurrentLetter(newLetter.toUpperCase());
       setCurrentMorseCode(MORSE_CODE_ALPHABET[newLetter].split(''));
     }
@@ -58,9 +58,9 @@ export default function CurrentLetter() {
           <CurrentMorseCode>
             {currentMorseCode.map((symbol, index) =>
               symbol === '.' ? (
-                <Dot isWritten={typedMorseCode[index] === symbol} />
+                <Dot isWritten={typedMorseCode[index] === symbol} key={Math.random()} />
               ) : (
-                <Dash isWritten={typedMorseCode[index] === symbol} />
+                <Dash isWritten={typedMorseCode[index] === symbol} key={Math.random()} />
               ),
             )}
           </CurrentMorseCode>

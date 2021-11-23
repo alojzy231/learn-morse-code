@@ -5,6 +5,11 @@ export const NavbarContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media ${({ theme: { medias } }) => medias.mobile} {
+    margin-top: -3.6rem;
+    transform: rotateZ(90deg);
+  }
 `;
 
 export const NavbarWrapper = styled.nav`

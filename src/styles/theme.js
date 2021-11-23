@@ -18,9 +18,14 @@ export const fontSizes = {
   paragraph: '1.3rem',
 };
 
+export const medias = {
+  mobile: '(max-width: 890px)',
+};
+
 const theme = {
   colors,
   fontSizes,
+  medias,
 };
 
 export default theme;

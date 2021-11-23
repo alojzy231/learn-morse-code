@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const TelegraphSounderButtonContainer = styled.button`
-  width: 25.6rem;
-  height: 25.6rem;
+export const TelegraphSounderButtonContainer = styled.button`
+  width: 23rem;
+  height: 23rem;
 
   margin-bottom: 2rem;
 
@@ -28,4 +28,5 @@ const TelegraphSounderButtonContainer = styled.button`
   }
 `;
 
-export default TelegraphSounderButtonContainer;
+export const TelegraphSounderButtonTitle = styled.h2``;
+export const TelegraphSounderButtonDescription = styled.h3``;
