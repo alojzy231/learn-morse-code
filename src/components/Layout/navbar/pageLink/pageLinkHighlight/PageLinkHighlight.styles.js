@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const PageLinkHighlightContainer = styled.div`
   width: 100%;
   position: absolute;
-  top: ${({ indexOfCurrentRoute }) => `${indexOfCurrentRoute * 53}%`};
+  top: ${({ indexOfCurrentRoute }) => `${indexOfCurrentRoute * 55}%`};
 
-  transform: translateY(-3.6rem);
+  transform: translateY(-3.9rem);
   z-index: -1;
 
   transition: ease 0.05s;
