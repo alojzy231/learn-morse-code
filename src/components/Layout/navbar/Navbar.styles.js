@@ -9,7 +9,7 @@ export const NavbarContainer = styled.div`
 
 export const NavbarWrapper = styled.nav`
   width: 7.2rem;
-  height: 21.6rem;
+  height: 14.4rem;
 
   display: flex;
   flex-direction: column;
