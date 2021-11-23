@@ -20,7 +20,11 @@ export default function CurrentLetter() {
 
   const changeCurrentLetter = () => {
     if (selectedLetters.length > 0) {
-      const newLetter = selectedLetters[Math.floor(Math.random() * selectedLetters.length)];
+      let newLetter = selectedLetters[Math.floor(Math.random() * selectedLetters.length)];
+
+      while (newLetter.toUpperCase() === currentLetter)
+        newLetter = selectedLetters[Math.floor(Math.random() * selectedLetters.length)];
+
       setCurrentLetter(newLetter.toUpperCase());
       setCurrentMorseCode(MORSE_CODE_ALPHABET[newLetter].split(''));
     }
