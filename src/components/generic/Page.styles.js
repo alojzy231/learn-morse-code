@@ -7,7 +7,6 @@ const PageTitle = styled.h1`
   text-align: center;
   @media ${({ theme: { medias } }) => medias.mobile} {
     ${Header2};
-    font-weight: bold;
   }
 `;
 

@@ -15,7 +15,8 @@ export const fontSizes = {
   header1: '9.6rem',
   header2: '4.8rem',
   header3: '2.4rem',
-  paragraph: '1.3rem',
+  paragraphBig: '2.4rem',
+  paragraphSmall: '1.3rem',
 };
 
 export const medias = {

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { Header1, Header2, Header3, Paragraph } from './Typography.styles';
+import { Header1, Header2, Header3, ParagraphBig } from './Typography.styles';
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -27,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
         ${Header3};
     }
     p{
-        ${Paragraph};
+        ${ParagraphBig};
     }
 `;
 
