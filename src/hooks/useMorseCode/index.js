@@ -13,8 +13,8 @@ const useMorseCode = () => {
   const checkIfSpace = (code) => code === 'Space';
 
   const handleButtonDown = ({ timeStamp }) => {
-    clearTimeout(resetTimeout);
     navigator.vibrate(100);
+    clearTimeout(resetTimeout);
     buttonRef.current.focus();
     convertKeyPressedToSignal(timeStamp);
   };
@@ -38,16 +38,6 @@ const useMorseCode = () => {
     }
   };
 
-  const handleTouchStart = (event) => {
-    event.preventDefault();
-    handleButtonDown(event);
-  };
-
-  const handleTouchEnd = (event) => {
-    event.preventDefault();
-    handleButtonUp(event);
-  };
-
   useEffect(() => {
     if (buttonRef.current) {
       const currentButtonRef = buttonRef.current;
@@ -55,21 +45,15 @@ const useMorseCode = () => {
       window.addEventListener('keydown', handleSpaceDown);
       window.addEventListener('keyup', handleSpaceUp);
 
-      currentButtonRef.addEventListener('mousedown', handleButtonDown);
-      currentButtonRef.addEventListener('mouseup', handleButtonUp);
-
-      currentButtonRef.addEventListener('touchstart', handleTouchStart);
-      currentButtonRef.addEventListener('touchend', handleTouchEnd);
+      currentButtonRef.addEventListener('pointerdown', handleButtonDown);
+      currentButtonRef.addEventListener('pointerup', handleButtonUp);
 
       return () => {
         window.removeEventListener('keydown', handleSpaceDown);
         window.removeEventListener('keyup', handleSpaceUp);
 
-        currentButtonRef.removeEventListener('mousedown', handleButtonDown);
-        currentButtonRef.removeEventListener('mouseup', handleButtonUp);
-
-        currentButtonRef.removeEventListener('touchstart', handleTouchStart);
-        currentButtonRef.removeEventListener('touchend', handleTouchEnd);
+        currentButtonRef.removeEventListener('pointerdown', handleButtonDown);
+        currentButtonRef.removeEventListener('pointerup', handleButtonUp);
       };
     }
 
